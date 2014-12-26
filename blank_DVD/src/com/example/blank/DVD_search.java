@@ -116,9 +116,9 @@ public class DVD_search extends Activity implements View.OnClickListener {
 	}
 
 	// /////ここから映画検索部分//////////////////////////////////////////////////////////////
-	String detail(String word) {// 検索したい本を入力することで,その本のあらすじを返す
+	String detail(String word) {// 検索したいDVD名を入力することで,その本のあらすじを返す
 		String text = "";
-		String query = word;// 検索したい本の名前
+		String query = word;// 検索したいDVDの名前
 		int target = 0;
 
 		try {
@@ -159,9 +159,9 @@ public class DVD_search extends Activity implements View.OnClickListener {
 	// ////検索部分ここまで/////////////////////////////////////////////////////
 
 	// /////曖昧さ部分　（没）//////////////////////////////////////////////////////////////
-	String detail_aimai(String word) {// 検索したい本を入力することで,その本のあらすじを返す
+	String detail_aimai(String word) {// 検索したいDVD名を入力することで,その本のあらすじを返す
 		String text = "";
-		String query = word;// 検索したい本の名前
+		String query = word;// 検索したいDVDの名前
 		int target = 0;
 
 		//
