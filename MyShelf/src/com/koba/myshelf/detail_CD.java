@@ -10,7 +10,7 @@ class detail_CD{//検索したい本を入力することで,その本のあら�
     String authority = "ws.audioscrobbler.com";
     String path = "2.0/";  
     String method = "album.getinfo";
-    String api_key = "6a1b3a56a22c4f826a3130ecfb9f3bdb";//検索したい本の名前
+    String api_key = "自分のもの";//検索したい本の名前
     String album ;
     String artist = "";
     String format = "json";
