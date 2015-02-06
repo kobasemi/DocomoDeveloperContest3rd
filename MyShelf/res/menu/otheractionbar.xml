@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+
+
+    
+       <item
+           android:id="@+id/star"
+     	   android:icon="@drawable/star"
+		   android:orderInCategory="100"
+		   android:title="camera"
+		   android:showAsAction="ifRoom"
+       	 />
+
+       <item
+           android:id="@+id/button1"
+           android:title="戻る"
+           android:orderInCategory="101"
+		   android:showAsAction="ifRoom" />
+    
+    
+</menu>

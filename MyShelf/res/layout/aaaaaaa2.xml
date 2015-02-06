@@ -10,7 +10,15 @@
     android:layout_width="265px"
     android:layout_height="265px"
     android:layout_centerHorizontal="true"
+<<<<<<< HEAD
+    android:layout_marginTop="45dp"
+=======
 
+<<<<<<< HEAD
+>>>>>>> 0d2bead... ver1.2.9.2
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
     android:background="#000000"/>
   
   <TextView

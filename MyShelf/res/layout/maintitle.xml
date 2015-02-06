@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+      android:background="#8b4513"
+    android:orientation="vertical" >
+    
+        >
+  <!-- <div>Icons made by <a href="http://www.danielbruce.se" title="Daniel Bruce">Daniel Bruce</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>  -->
+  
+     
+      
+      <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="Shelf"
+                android:textSize="30dp" />
+      
+      
+      
+       
+       <ImageButton
+           android:id="@+id/camerabt"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerVertical="true"
+       	   android:layout_alignParentRight="true"
+           android:layout_alignParentTop="true"
+           android:src="@drawable/camera" />
+   
+</LinearLayout>

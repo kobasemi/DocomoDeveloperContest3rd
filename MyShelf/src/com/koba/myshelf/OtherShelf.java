@@ -37,25 +37,25 @@ import com.mysql.jdbc.Statement;
 public class OtherShelf extends Activity {
 
 
-
+	
 	String DBPASS = Pass.DBPASS;
 	String PATH = Pass.PATH;
 	String USER = Pass.USER;
-
-
-
-
+	
+	
+	
+	
 	private ActionBarDrawerToggle mDrawerToggle;
 	private DrawerLayout mDrawer;
-
+	
 	String showscreenname = null;
 	public Connection con = null;
     public PreparedStatement ps = null;
 
-
+    
     String favo_table = null;
-
-
+    
+    
 
     final Handler handler=new Handler();
 
@@ -73,7 +73,7 @@ public class OtherShelf extends Activity {
     public static OAuthAuthorization _oauth = null;
 
 
-
+    	
      ArrayList<Integer> tid = new ArrayList<Integer>();
      ArrayList<Long> tuid = new ArrayList<Long>();
      ArrayList<String> title = new ArrayList<String>();
@@ -93,11 +93,11 @@ public class OtherShelf extends Activity {
      ArrayList<String> author = new ArrayList<String>();
      ArrayList<String> wikipedia = new ArrayList<String>();
      ArrayList<String> video_id = new ArrayList<String>();
-
+     
      Long uid = null;
      Long myuid = null;
      String myscreenname = null;
-
+     
      String table_name = null;
 
     Bitmap  bitmaplist[] = new Bitmap[0];
@@ -111,18 +111,15 @@ public class OtherShelf extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
 		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 		setContentView(R.layout.othershelf);
-
+      
         Intent intent = getIntent();
 		table_name = intent.getStringExtra("table_name");
-
-
-
 		System.out.println("table" + table_name);
 		name = intent.getStringExtra("name");
-
+		
         SharedPreferences pref = getSharedPreferences("pref", 0);
         pretoken = pref.getString("token", null);
 
@@ -133,12 +130,12 @@ public class OtherShelf extends Activity {
                 	try{
                 	  // ドライバクラスをロード
                     Class.forName("com.mysql.jdbc.Driver");
-
-
+                    
+                    
                     // データベースへ接続
                     con = DriverManager.getConnection(PATH,USER,DBPASS);
                    // ステートメントオブジェクトを生成
-
+                
                     //preferenceに保存されていたtokenをDB問い合わせ。
                     String sql = "select * from all_user where token = '" + pretoken + "'";
 
@@ -150,35 +147,35 @@ public class OtherShelf extends Activity {
 
                     while(rs.next()) {
                         // データを取得
-
+          
                          myuid = rs.getLong("uid");
                          myscreenname = rs.getString("screenname");
-
-
+                        
+                  
                     }
 
                     // クエリーを実行して結果セットを取得
                     String  selectuid =  "select * from all_user where table_name = '" + table_name +"'";
-
-
-
+                    
+                    
+                    
                    	ps = con.prepareStatement(selectuid);
                    	ResultSet uidsel = ps.executeQuery();
-
+                   
 
                     while(uidsel.next()) {
-
+                   
                     	getuid = uidsel.getLong("uid");
                  //   	showscreenname =  uidsel.getString("screenname");
                     	System.out.println("getuid :" + getuid);
-
-
+                    	
+                    	
                     }
-
-
+                   	
+              
                     String counts =  " select count(*) as cnt from "+ table_name;
                     System.out.println(counts);
-
+                    
                    	ps = con.prepareStatement(counts);
                    	ResultSet countres = ps.executeQuery();
                    	countres.next();
@@ -191,7 +188,7 @@ public class OtherShelf extends Activity {
 
                     String correction = "select * from "+ table_name;
                     ps = con.prepareStatement(correction);
-
+                    
 
 
                     // クエリーを実行して結果セットを取得
@@ -223,7 +220,7 @@ public class OtherShelf extends Activity {
                     	System.out.println(res.getString("commenttable"));
                     	artist.add(res.getString("artists"));
                     	video_id.add(res.getString("video_id"));
-
+                    	
 
             		 				URL url = null;
 
@@ -269,11 +266,11 @@ public class OtherShelf extends Activity {
             	    	                	            gridView.setVerticalSpacing(10);
             	    	                	            gridView.setHorizontalSpacing(10);
             	    	                	            setContentView(gridView);*/
+            	    	                	    	    
+            	    	                	    	    
 
 
-
-
-
+            	    	         
             	    	                	    	    GridView gv = (GridView)findViewById(R.id.gridView1);
             	    	                	    	    
                        	    	                	 //   	    gv.setGravity(Gravity.CENTER);
@@ -285,6 +282,26 @@ public class OtherShelf extends Activity {
                        	    	                	        System.out.println("height2" + height);
                              	    	                      //   creategrid(picture);
 
+<<<<<<< HEAD
+
+<<<<<<< HEAD
+
+
+            	    	                	    	    gv.measure(
+            	    	                	                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), 
+            	    	                	                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+            	    	                	            
+            	    	                	    	
+            	    	                	        int  height = gv.getMeasuredHeight();
+            	    	                	        int width = 0;
+            	    	                	            
+            	    	                	            
+=======
+<<<<<<< HEAD
+>>>>>>> 0d2bead... ver1.2.9.2
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
             	    	                	            
             	               		 			titles = titles2;
             	               		 			bitmaplist = bitmaplist2;
@@ -298,6 +315,16 @@ public class OtherShelf extends Activity {
 
 
 
+=======
+            	               		 	
+            	               		 			titles = titles2;
+            	               		 			bitmaplist = bitmaplist2;
+
+            	               		 			gv.setAdapter(new SimpleAdapter(getApplicationContext(),titles,bitmaplist));
+            	               		
+            	               		 			
+            	               		 			
+>>>>>>> parent of 80fff1a... ver 1.2.9
             	               		 			gv.setOnItemClickListener(new GridOnItemClick());
 
 
@@ -345,20 +372,20 @@ public class OtherShelf extends Activity {
 
 
 
-
+        
     	//TextView usertext=(TextView)findViewById(R.id.textView10);
     	//usertext.setText("@" + name + "Shelf");
         getActionBar().setTitle("This is "+" @" + name + " Shelf");
 
 	}
-
-
-
+	
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.otheractionbar, menu);
-
+		
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -368,7 +395,7 @@ public class OtherShelf extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-
+	
 		  switch (item.getItemId()) {
 	        case R.id.star:
 	        	addstarbtr();
@@ -378,12 +405,12 @@ public class OtherShelf extends Activity {
 	        	break;
 	        }
 
-
+		
 		return super.onOptionsItemSelected(item);
 	}
 
 
-
+	
 
 
 
@@ -422,7 +449,7 @@ public class OtherShelf extends Activity {
 
 		// amazonやyahoo,rakutenなどのECURLです
 		private String bECURL;
-
+		
 		private String wikipedia;
 		private String manufactured;
 		private String artists;
@@ -431,20 +458,20 @@ public class OtherShelf extends Activity {
 		private String  EAN13 ;
 		private String  commenttable ;
 		// private int nowDate;
-
-
-
+	
+		
+		
 		}
 
-
+	
 	public void finishactivity() {
 
 
-			finish();
-
-
+			finish();			
+			
+			
 		}
-
+	
 
 
 	public class GridOnItemClick implements OnItemClickListener {
@@ -458,16 +485,16 @@ public class OtherShelf extends Activity {
 			Paperbrige brige = new Paperbrige();
 
 			System.out.println(titles[position]);
-
+		
 			brige.bvariety = variety.get(position);
-
+		
 
 			//varietyで飛ばすintentが違う
-
-
+			
+			
 			if(brige.bvariety.equals("DVD")){
-
-
+				
+				
 				brige.btitle =titles[position];
 				brige.byear = Integer.toString(year.get(position));
 				brige.bdirector = director.get(position);
@@ -481,9 +508,9 @@ public class OtherShelf extends Activity {
 				brige.wikipedia = wikipedia.get(position);
 				brige.manufactured = manufactured.get(position);
 				brige.commenttable = commenttable.get(position);
-
-
-
+				
+				
+				
 				 Intent intents = new Intent();
 		            intents.setClassName(
 		                    "com.koba.myshelf",
@@ -504,11 +531,11 @@ public class OtherShelf extends Activity {
 		            intents.putExtra("uid",tuid.get(position));
 		            intents.putExtra("video_ID", video_id.get(position));
 		            startActivity(intents);
-
-
+				
+				
 			}else if(brige.bvariety.equals("CD")){
-
-
+				
+				
 				brige.btitle =titles[position];
 				brige.byear = Integer.toString(year.get(position));
 			//	brige.bdirector = director.get(position);
@@ -521,18 +548,18 @@ public class OtherShelf extends Activity {
 				brige.bECURL = EC.get(position);
 				brige.manufactured = manufactured.get(position);
 				brige.artists= artist.get(position);
-
-
+				
+				
 				 Intent intents = new Intent();
 		            intents.setClassName(
 		                    "com.koba.myshelf",
 		                    "com.koba.myshelf.CDPub");
 		            intents.putExtra("c_screen_name",name);
 		            intents.putExtra("name",name);
-
+		            
 		            intents.putExtra("title",brige.btitle);
 		            intents.putExtra("year",brige.byear);
-
+		           
 		            intents.putExtra("music",brige.bmusic);
 		            intents.putExtra("note",brige.bnote);
 		            intents.putExtra("variety",brige.bvariety);
@@ -541,20 +568,20 @@ public class OtherShelf extends Activity {
 		            System.out.println("commenttable :" + commenttable.get(position));
 		            intents.putExtra("commenttable",commenttable.get(position));
 		            intents.putExtra("uid",tuid.get(position));
-
+		            
 		            intents.putExtra("artists",brige.artists);
 		            intents.putExtra("manufacture", brige.manufactured);
 		            intents.putExtra("video_ID", video_id.get(position));
 		            startActivity(intents);
-
-
-
-
-
+				
+				
+				
+				
+				
 			}else if(brige.bvariety.equals("book")){
-
-
-
+				
+				
+				
 				brige.btitle =titles[position];
 				brige.byear = Integer.toString(year.get(position));
 			//	brige.bcast = cast.get(position);
@@ -566,8 +593,8 @@ public class OtherShelf extends Activity {
 				brige.bECURL = EC.get(position);
 				brige.manufactured = manufactured.get(position);
 				brige.author = author.get(position);
-
-
+				
+				
 				 Intent intents = new Intent();
 		            intents.setClassName(
 		                    "com.koba.myshelf",
@@ -576,14 +603,14 @@ public class OtherShelf extends Activity {
 		            intents.putExtra("name",name);
 		            intents.putExtra("title",brige.btitle);
 		            intents.putExtra("year",brige.byear);
-
+		            
 		            intents.putExtra("summary",brige.bsummary);
 		            intents.putExtra("note",brige.bnote);
 		            intents.putExtra("variety",brige.bvariety);
 		            intents.putExtra("picture",brige.bpicture);
 		            intents.putExtra("author",brige.author);
 		            intents.putExtra("manufacture", brige.manufactured);
-
+		            
 		            intents.putExtra("EC",brige.bECURL);
 		            intents.putExtra("commenttable",commenttable.get(position));
 		            
@@ -591,11 +618,11 @@ public class OtherShelf extends Activity {
 		            intents.putExtra("uid",tuid.get(position));
 		            startActivity(intents);
 
-
-
+				
+				
 			}else{
-
-
+				
+				
 		 		AlertDialog.Builder dlg;
                 dlg = new AlertDialog.Builder(OtherShelf.this);
                 dlg.setTitle("読み込めませんでした");
@@ -603,14 +630,14 @@ public class OtherShelf extends Activity {
                 dlg.setPositiveButton("Yes", null);
                 dlg.show();
 
-
+				
 			}
+			
+			
+			
 
 
-
-
-
-
+		
 
 
 
@@ -625,14 +652,14 @@ public class OtherShelf extends Activity {
 
 
 
-
+		
 		class addstar extends Thread{
 
 
-
+			
 		       public void run() {
 
-
+		            	
 		         Connection con = null;
 		         // データベースへ接続
 		        try {
@@ -641,21 +668,21 @@ public class OtherShelf extends Activity {
 		 		// TODO 自動生成された catch ブロック
 		 		e.printStackTrace();
 		        }
+		   
 
-
-
+		   
 		        // クエリーを実行して結果セットを取得
-
+		    
 
 		        ResultSet rs =null;
-
+		        
 		        String favquery = "select * from all_user where uid = '"+  myuid +"'";
-
+		        
 		    	System.out.println(favquery);
 		        try {
 		        	  ps = con.prepareStatement(favquery);
 		        	   rs = ps.executeQuery();
-
+		        	  
 		        } catch (SQLException e) {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
@@ -666,24 +693,24 @@ public class OtherShelf extends Activity {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 				}
-
-
-
-
-
+		        
+		        
+		        
+		        
+		        
 				try {
-
-
-
+					
+						
+						
 						 while(rs.next()) {
 							 favo_table	= rs.getString("favo_table");
-
-
+							 
+					    
 						 }
-
-
-
-
+						
+					
+					
+				
 		          java.sql.Statement stmt = null;
 					try {
 						stmt = con.createStatement();
@@ -692,13 +719,13 @@ public class OtherShelf extends Activity {
 						e3.printStackTrace();
 					}
 
-
+					
 				String 	searchfav = "select * from " + favo_table +" where screenname='"+ name +"'";
-
+					
 				System.out.println(searchfav);
-
-
-
+				
+				
+				
 				      rs = null;
 		          try {
 		       	   rs = stmt.executeQuery(searchfav);
@@ -707,8 +734,8 @@ public class OtherShelf extends Activity {
 		   			 System.out.println("aaa");
 		   			e.printStackTrace();
 		   		}
-
-		          int a =0;
+		          
+		          int a =0; 
 		          while(rs.next())
 		          {
 
@@ -716,8 +743,8 @@ public class OtherShelf extends Activity {
 		          }
 
 		          if(a == 0)	{
-
-
+					
+					
 					  String maxcntsql = "select max(id) from " + favo_table ;
 
 			          System.out.println(maxcntsql);
@@ -747,43 +774,53 @@ public class OtherShelf extends Activity {
 			   	   }
 
 					int newcnt = max +1;
-
-
+					
+					
 
 			        rs =null;
+<<<<<<< HEAD
+			        
+			        String favins = "insert into " + favo_table +"(id,uid,table_name,screenname)Values("+newcnt +","+getuid + ",'"+table_name+"','"+myscreenname+"')";
+			        
+=======
 
 			        String favins = "insert into " + favo_table +"(id,uid,table_name,screenname)Values("+newcnt +","+getuid + ",'"+table_name+"','"+name+"')";
 
+<<<<<<< HEAD
+>>>>>>> 0d2bead... ver1.2.9.2
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 			         Statement  stmt1 = null;
 
 			         try {
 						int num = stmt.executeUpdate(favins);
-
+				
 
 			         } catch (SQLException e) {
 
 						e.printStackTrace();
 					}
-
-
-
-
+			        
+				
+					
+			         
 
 	            	    handler.post(new Runnable() {
 	            	    	                	    	@Override
 	            	    	                            public void run() {
-
-
+	            	    	                  
+	            	    	                	    		
 
 	            	    	                	            SharedPreferences pref = getSharedPreferences("pref", 0);
 	            	    	                	            String   pretoken = pref.getString("token", null);
 	            	    	                	            String   pretokensecret = pref.getString("tokensecret", null);
-
+	            	    	                	          
 	            	    	                	            Twit Twitteruptext =new Twit(pretoken,pretokensecret);
-
+	            	    	                	    
 	            	    	                	            Twitteruptext.TweetUp("@"+name+" さんの本棚をお気に入りに追加しました.");
-
+	            	    	                	    		
 	            	    	                	    		  AlertDialog.Builder dlg;
 	            	    					                   dlg = new AlertDialog.Builder(OtherShelf.this);
 	            	    					                   dlg.setTitle("完了");
@@ -791,25 +828,25 @@ public class OtherShelf extends Activity {
 	            	    					                   dlg.setPositiveButton("Yes", null);
 	            	    					                   dlg.show();
 
-
-
+	            	    	                	    		
+	            	    	                	    		
 
 	            	    	                            }
 	            	    	                        });
 
 
-
-
-
+			         
+			         
+					
 		          }else{
-
-
-
+		        	  
+		        	  
+		        	  
 
 	            	    handler.post(new Runnable() {
 	            	    	                	    	@Override
 	            	    	                            public void run() {
-
+	            	    	                  
 
 	            	    	                	    		  AlertDialog.Builder dlg;
 	            	    					                   dlg = new AlertDialog.Builder(OtherShelf.this);
@@ -818,44 +855,44 @@ public class OtherShelf extends Activity {
 	            	    					                   dlg.setPositiveButton("Yes", null);
 	            	    					                   dlg.show();
 
-
-
-
-
+	            	    	                	    			
+	            	    	                	    		
+	            	    	                	    		
+	            	    	                	    		
 
 	            	    	                            }
 	            	    	                        });
 
 
-
-
-
-
-
+		        	  
+		        	  
+		        	  
+		        	  
+		        	  
 		          }
-
-
-
+					
+					
+					
 				} catch (SQLException e) {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 				}
-
-
-
-		       }
-
+				
+			    		
+				
+		       }		
+		             
 
 		}
-
-
-
-
-
+		
+		
+		
+		
+		
 		public void addstarbtr() {
 
-
-
+				
+				
 
 			    addstar as = new addstar();
 					 Thread childThread = new Thread(as);
@@ -868,8 +905,8 @@ public class OtherShelf extends Activity {
 						// TODO 自動生成された catch ブロック
 						e.printStackTrace();
 					}
-
-
+				    
+				    
 
 		}
 

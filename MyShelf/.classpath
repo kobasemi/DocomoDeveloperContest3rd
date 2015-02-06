@@ -5,5 +5,10 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="C:/Users/高次/Desktop/libs/docomo-common-android-sdk-1.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/高次/Desktop/libs/docomo-imagerecognition-android-sdk-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/高次/Desktop/libs/jackson-annotations-2.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/高次/Desktop/libs/jackson-core-2.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/高次/Desktop/libs/jackson-databind-2.2.3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

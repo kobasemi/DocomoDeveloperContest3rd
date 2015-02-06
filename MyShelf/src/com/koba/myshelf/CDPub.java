@@ -82,7 +82,7 @@ public class CDPub extends Activity{
 	String commenttable = null;
 
 	String title = null;
-	Long uid = 0l;
+		int uid = 0;
 
 	InputMethodManager inputMethodManager;
 
@@ -703,24 +703,6 @@ public class CDPub extends Activity{
 		    t01.setText(note);
 		    
 		    
-		    
-		    if(year == null|| year.equals("null") || year.equals("NULL") || year.equals("不明")){
-		    	t3.setVisibility(View.GONE);
-		    }
-			
-		    if(artist == null|| year.equals("null") || artist.equals("NULL") || artist.equals("不明")){
-		    	 t4.setVisibility(View.GONE);
-		    }
-		 
-		    
-		    if( manufacture == null  || manufacture.equals( "null") ||  manufacture.equals("NULL")  ||  manufacture.equals("不明")){
-		    	 t5.setVisibility(View.GONE);
-	
-		    }
-		    
-		    
-		    
-		    
 		    commentload cm = new commentload();
 			 Thread childThread = new Thread(cm);
 			 childThread.start();
@@ -946,7 +928,14 @@ public class CDPub extends Activity{
 	      }
 
 
+<<<<<<< HEAD
 	      myAdapter = new SimpleAdapter(
+=======
+
+
+	      // 画像表示用に作成したCustomAdapterに、上記ArrayListを設定
+	     final SimpleAdapter myAdapter = new SimpleAdapter(
+>>>>>>> parent of 80fff1a... ver 1.2.9
 							    CDPub.this,
 							    outputArray,
 							     R.layout.twitline,  // ここがポイント２
@@ -964,12 +953,11 @@ public class CDPub extends Activity{
 
 
 	      int totalHeight  = 0;
-	      int simpleline = 50; 
 	     int desiredWidth = MeasureSpec.makeMeasureSpec(listView.getWidth(), MeasureSpec.AT_MOST);
 	     for (int i = 0; i < myAdapter.getCount(); i++) {
 	  	   View listItem = myAdapter.getView(i, null, listView);
 	  	   listItem.measure(desiredWidth , MeasureSpec.UNSPECIFIED);
-	  	   totalHeight = totalHeight +  simpleline;
+	  	  totalHeight = totalHeight +  listItem.getMeasuredHeight();
 	   }
 
 	   // 実際のListViewに反映する
